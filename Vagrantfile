@@ -15,7 +15,7 @@ NOME_HOST_JENKINS = "jenkins"
 
 # Configuração Nginx
 VERSAO_VM_NGINX = "ubuntu/xenial64"
-MEMORIA_NGINX = 128
+MEMORIA_NGINX = 256
 NOME_HOST_NGINX = "nginx"
 
 # Quantidade de servidores para cada tipo
