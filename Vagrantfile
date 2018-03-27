@@ -18,6 +18,11 @@ VERSAO_VM_NGINX = "ubuntu/xenial64"
 MEMORIA_NGINX = 256
 NOME_HOST_NGINX = "nginx"
 
+# Configuração Ansible
+VERSAO_VM_ANSIBLE = "ubuntu/xenial64"
+MEMORIA_ANSIBLE = 256
+NOME_HOST_ANSIBLE = "ansible"
+
 # Quantidade de servidores para cada tipo
 QUANTIDADE_SERVIDORES_TOMCAT_PROD = 1
 QUANTIDADE_SERVIDORES_TOMCAT_QA = 1
@@ -78,6 +83,7 @@ Vagrant.configure("2") do |config|
         end
     end
     
+    # Iniciar VM Jenkins
     config.vm.define "jenkins" do |jenkins|
         jenkins.vm.hostname = NOME_HOST_JENKINS
         jenkins.vm.box = VERSAO_VM_JENKINS
@@ -90,6 +96,7 @@ Vagrant.configure("2") do |config|
         end
     end
 
+    # Iniciar VM nginx
     config.vm.define "nginx" do |nginx|
         nginx.vm.hostname = NOME_HOST_NGINX
         nginx.vm.box = VERSAO_VM_NGINX
@@ -99,6 +106,18 @@ Vagrant.configure("2") do |config|
 
         nginx.vm.provider VAGRANT_VM_PROVIDER do |vb|
             vb.memory = MEMORIA_NGINX
+        end
+    end
+
+    # Iniciar VM ansible
+    config.vm.define "ansible" do |ansible|
+        ansible.vm.hostname = NOME_HOST_ANSIBLE
+        ansible.vm.box = VERSAO_VM_ANSIBLE
+        ansible.vm.network "private_network", ip: "10.0.15.3"
+        ansible.vm.provision :shell, path: "bootstrapAnsible.sh"
+
+        ansible.vm.provider VAGRANT_VM_PROVIDER do |vb|
+            vb.memory = MEMORIA_ANSIBLE
         end
     end
 
