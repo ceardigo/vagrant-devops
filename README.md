@@ -7,3 +7,4 @@ QA1: http://10.0.15.41:8080<br />
 DES1: http://10.0.15.61:8080<br />
 NGINX: http://10.0.15.8<br />
 Jenkins: http://10.0.15.2:8080<br />
+Ansible: 10.0.15.2
