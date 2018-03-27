@@ -7,4 +7,5 @@ apt-get update
 #
 #sudo apt-get -y install oracle-java8-installer
 apt-get install -y jenkins
+apt-get install -y python
 apt-get -y upgrade
